@@ -1,0 +1,65 @@
+# Keep node_modules directories
+node_modules/
+
+# Keep dist and build directories  
+dist/
+build/
+.next/
+
+# Keep environment files
+.env
+.env.local
+.env.*.local
+
+# Keep logs
+*.log
+logs/
+JUDGE_QA.md
+# Keep OS files
+.DS_Store
+Thumbs.db
+
+# Keep IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Keep cache and temp files
+.cache/
+temp/
+tmp/
+*.tmp
+
+# Keep blockchain artifacts and cache
+blockchain/artifacts/
+blockchain/cache/
+blockchain/typechain-types/
+
+# Keep ML models and uploads
+ml-service/uploads/
+ml-service/ml_models/*.pkl
+ml-service/ml_models/*.h5
+ml-service/ml_models/*.pt
+
+# Keep Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Keep coverage reports
+coverage/
+.coverage
+htmlcov/
+
+# Keep database files
+*.db
+*.sqlite
+
+# Keep certificate and key files
+*.pem
+*.key
+*.crt

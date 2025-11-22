@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Blockchain Node (Hardhat)
+  blockchain:
+    image: node:18-alpine
+    container_name: medibytes-blockchain
+    working_dir: /app/blockchain
+    volumes:
+      - ./blockchain:/app/blockchain
+      - ./shared:/app/shared
+    ports:
+      - "8545:8545"
+    command: npm run node
+    networks:
+      - medibytes-network
+
+  # ML Service (Flask + Python)
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: medibytes-ml-service
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=run.py
+    volumes:
+      - ./ml-service:/app
+      - ./ml-service/ml_models:/app/ml_models
+    networks:
+      - medibytes-network
+
+  # Frontend (React + Vite)
+  frontend:
+    image: node:18-alpine
+    container_name: medibytes-frontend
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+      - ./shared:/app/shared
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_ML_SERVICE_URL=http://ml-service:5000
+    command: npm run dev -- --host
+    depends_on:
+      - ml-service
+      - blockchain
+    networks:
+      - medibytes-network
+
+networks:
+  medibytes-network:
+    driver: bridge
+
+volumes:
+  blockchain-data:
+  ml-models:

@@ -1,0 +1,23 @@
+{
+  "name": "medibytes-blockchain",
+  "version": "1.0.0",
+  "description": "Smart contracts for MediBytes healthcare platform",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy-private.js",
+    "deploy:local": "hardhat run scripts/deploy-private.js --network localhost",
+    "deploy:mumbai": "hardhat run scripts/deploy-private.js --network mumbai",
+    "deploy:polygon": "hardhat run scripts/deploy-private.js --network polygon",
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^17.2.3"
+  }
+}

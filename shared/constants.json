@@ -1,0 +1,14 @@
+{
+  "network": "localhost",
+  "chainId": "31337",
+  "contracts": {
+    "EHRStorage": "",
+    "AccessControl": "",
+    "ReportVerification": "",
+    "OrganRegistry": "",
+    "OrganAllocation": ""
+  },
+  "ml_service_url": "http://localhost:5000",
+  "ipfs_gateway": "https://ipfs.io/ipfs/",
+  "timestamp": ""
+}

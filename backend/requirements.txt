@@ -1,0 +1,31 @@
+# MediBytes Backend Dependencies
+
+# Web Framework
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart
+
+# Database & Auth
+supabase>=2.0.0
+python-jose[cryptography]
+passlib[bcrypt]
+python-dotenv
+
+# Blockchain
+web3>=6.0.0
+eth-account>=0.10.0
+
+# IPFS (Pinata)
+requests
+aiohttp
+
+# OCR (AI analysis handled separately by teammate)
+pytesseract
+Pillow
+pdf2image
+
+# Utilities
+pydantic>=2.0.0
+pydantic-settings
+python-dateutil
+cryptography

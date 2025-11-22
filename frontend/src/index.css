@@ -1,0 +1,942 @@
+/* ============================================
+   MediBytes - Premium Healthcare Platform
+   Production-Grade Stylesheet
+   ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
+:root {
+  /* Primary Colors */
+  --color-primary-50: #eef4ff;
+  --color-primary-100: #d9e5ff;
+  --color-primary-200: #bcd0ff;
+  --color-primary-300: #8eb3ff;
+  --color-primary-400: #5987ff;
+  --color-primary-500: #3361ff;
+  --color-primary-600: #1a3af5;
+  --color-primary-700: #1429e1;
+  --color-primary-800: #1724b6;
+  --color-primary-900: #19248f;
+  
+  /* Teal Accent */
+  --color-teal-50: #effefb;
+  --color-teal-100: #c7fff4;
+  --color-teal-200: #90ffea;
+  --color-teal-300: #51f7dd;
+  --color-teal-400: #1de4ca;
+  --color-teal-500: #04c8b1;
+  --color-teal-600: #00a192;
+  --color-teal-700: #058077;
+  --color-teal-800: #0a6560;
+  --color-teal-900: #0d544f;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  
+  /* Shadows */
+  --shadow-glow-primary: 0 0 40px rgba(51, 97, 255, 0.3);
+  --shadow-glow-teal: 0 0 40px rgba(4, 200, 177, 0.3);
+  --shadow-elevated: 0 20px 60px -10px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.1), 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.18), 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #3361ff 0%, #04c8b1 100%);
+  --gradient-mesh: radial-gradient(at 40% 20%, hsla(212, 100%, 74%, 0.3) 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, hsla(174, 97%, 41%, 0.2) 0px, transparent 50%),
+                   radial-gradient(at 0% 50%, hsla(212, 100%, 74%, 0.2) 0px, transparent 50%),
+                   radial-gradient(at 80% 50%, hsla(174, 97%, 41%, 0.15) 0px, transparent 50%),
+                   radial-gradient(at 0% 100%, hsla(212, 100%, 74%, 0.15) 0px, transparent 50%),
+                   radial-gradient(at 80% 100%, hsla(174, 97%, 41%, 0.1) 0px, transparent 50%);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Monospace for addresses */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 100%);
+  border-radius: 100px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #64748b 0%, #94a3b8 100%);
+  background-clip: padding-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 transparent;
+}
+
+/* ============================================
+   Glassmorphism Utilities
+   ============================================ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   Gradient Text
+   ============================================ */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-shine {
+  background: linear-gradient(
+    90deg,
+    #3361ff 0%,
+    #04c8b1 25%,
+    #3361ff 50%,
+    #04c8b1 75%,
+    #3361ff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ============================================
+   Animated Background
+   ============================================ */
+.mesh-gradient-bg {
+  background: var(--gradient-mesh);
+  background-color: #f8fafc;
+  min-height: 100vh;
+  position: relative;
+}
+
+.mesh-gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Floating Orbs Animation */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(51, 97, 255, 0.4) 0%, rgba(4, 200, 177, 0.2) 100%);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.floating-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(4, 200, 177, 0.3) 0%, rgba(51, 97, 255, 0.2) 100%);
+  top: 50%;
+  right: -50px;
+  animation-delay: -7s;
+}
+
+.floating-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, rgba(51, 97, 255, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+  bottom: -50px;
+  left: 30%;
+  animation-delay: -14s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(20px, 10px) scale(1.02);
+  }
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+.btn-primary {
+  position: relative;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px -3px rgba(51, 97, 255, 0.5);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(51, 97, 255, 0.6);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  position: relative;
+  background: transparent;
+  color: #3361ff;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 2px solid rgba(51, 97, 255, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background: rgba(51, 97, 255, 0.05);
+  border-color: rgba(51, 97, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Ripple Effect */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+
+.btn-ripple:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* ============================================
+   Card Styles
+   ============================================ */
+.card-elevated {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  border-color: rgba(51, 97, 255, 0.2);
+}
+
+.card-glow:hover {
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow-primary);
+}
+
+/* 3D Card Tilt Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-3d:hover .card-3d-inner {
+  transform: rotateX(2deg) rotateY(-2deg);
+}
+
+/* ============================================
+   Input Styles
+   ============================================ */
+.input-modern {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-modern:hover {
+  border-color: #cbd5e1;
+  background: white;
+}
+
+.input-modern:focus {
+  border-color: #3361ff;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(51, 97, 255, 0.1);
+}
+
+.input-modern::placeholder {
+  color: #94a3b8;
+}
+
+/* Input with icon */
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  transition: color 0.3s;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #3361ff;
+}
+
+.input-with-icon {
+  padding-left: 48px;
+}
+
+/* ============================================
+   Loading & Skeleton States
+   ============================================ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #f1f5f9 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Spinner */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(51, 97, 255, 0.2);
+  border-top-color: #3361ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation for loading states */
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(51, 97, 255, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 15px rgba(51, 97, 255, 0);
+  }
+}
+
+/* ============================================
+   Toast Notifications
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid;
+  animation: toast-slide-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 380px;
+}
+
+.toast-success {
+  border-left-color: #22c55e;
+}
+
+.toast-error {
+  border-left-color: #ef4444;
+}
+
+.toast-warning {
+  border-left-color: #f59e0b;
+}
+
+.toast-info {
+  border-left-color: #3361ff;
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-exit {
+  animation: toast-slide-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes toast-slide-out {
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Page Transitions
+   ============================================ */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+/* Stagger animation for list items */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stagger-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Responsive Utilities
+   ============================================ */
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .input-modern {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .toast-container {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+  }
+  
+  .toast {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   Focus Visible (Accessibility)
+   ============================================ */
+:focus-visible {
+  outline: 2px solid #3361ff;
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   Selection Styles
+   ============================================ */
+::selection {
+  background: rgba(51, 97, 255, 0.2);
+  color: #1e293b;
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   Wallet Address Display
+   ============================================ */
+.wallet-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  transition: all 0.2s;
+}
+
+.wallet-address:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-color: #cbd5e1;
+}
+
+.wallet-address-copy {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.wallet-address-copy:hover {
+  background: rgba(51, 97, 255, 0.1);
+  color: #3361ff;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+  color: #cbd5e1;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.empty-state-description {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 300px;
+}
+
+/* ============================================
+   Badge Styles
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-primary {
+  background: rgba(51, 97, 255, 0.1);
+  color: #3361ff;
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+.badge-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* ============================================
+   Tooltip
+   ============================================ */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  padding: 8px 12px;
+  background: #1e293b;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 6px solid transparent;
+  border-top-color: #1e293b;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   Icon Button
+   ============================================ */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.icon-btn:active {
+  background: #e2e8f0;
+}
+
+/* ============================================
+   Divider
+   ============================================ */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 24px 0;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+.progress-bar {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Avatar
+   ============================================ */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.avatar-ring {
+  padding: 3px;
+  background: var(--gradient-primary);
+  border-radius: 14px;
+}
+
+.avatar-ring > .avatar {
+  background: white;
+  color: #3361ff;
+}
+
+/* ============================================
+   Stat Card
+   ============================================ */
+.stat-card {
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+}
+
+.stat-card-value {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-card-label {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.stat-card-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.stat-card-trend-up {
+  color: #16a34a;
+}
+
+.stat-card-trend-down {
+  color: #dc2626;
+}
